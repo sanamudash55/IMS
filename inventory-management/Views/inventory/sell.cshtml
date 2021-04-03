@@ -1,0 +1,23 @@
+@model Inventory
+<form action="/inventory/sell" method="POST">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Name" />
+    <input type="hidden" asp-for="Supplier" />
+    <input type="hidden" asp-for="ExpDate" />
+    <input type="hidden" asp-for="Price" />
+    
+        How many quantities do you want to sell?
+        
+        <div class="col-md-6 form-group">
+                <input name="sellquan" type="number" class="form-control" required>      
+
+                <input id="one" type="hidden" asp-for= "Quantity" class="form-control" value="777" required> 
+                
+                <script>
+                    var soldquan = sellquan ;
+                    document.getElementById("one").value = 88;
+                </script>                     
+        </div>        
+        <br>
+        <button type="submit" class="btn btn-primary">Sell</button>
+</form>

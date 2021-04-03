@@ -1,0 +1,41 @@
+@model Inventory
+<form action="/inventory/Create" method="POST">
+
+                <h1 class="card-title">Create</h1>
+
+              <form>
+
+                <div class="card-body">
+                    <div class="col-md-6 form-group">
+                    <label asp-for="Name">Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                          <input asp-for="Name" class="form-control" type="text" required>      
+                  </div>
+                    <div class="col-md-6 form-group">
+                    <label asp-for="Supplier"> Supplier</label>
+                    <span asp-validation-for="Supplier" class="text-danger"></span>
+                          <input asp-for="Supplier" class="form-control" type="text" required>      
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label asp-for="ExpDate"> Expiry Date</label>
+                    <span asp-validation-for="ExpDate" class="text-danger"></span>
+                          <input asp-for="ExpDate" class="form-control" type="date" required>      
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label asp-for="Price"> Price</label>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                          <input asp-for= "Price" class="form-control" type="number" required>      
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label asp-for="Quantity"> Quantity</label>
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                          <input asp-for= "Quantity" class="form-control" type="number" required>      
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+</form>            
+            <!-- /.card -->
