@@ -19,10 +19,12 @@ namespace InventoryManagement.Controllers{
         {
             db = _db;
         }
+        [Authorize]
         public IActionResult WelcomePage()
         {
             return View();
         }
+        
         public IActionResult Index()
         {   
             var product = db.Inventories.ToList();
@@ -146,6 +148,7 @@ namespace InventoryManagement.Controllers{
                 var claims = new List<Claim>();
                 claims.Add(new Claim("username",username));
                 claims.Add(new Claim(ClaimTypes.NameIdentifier,username));
+                claims.Add(new Claim(ClaimTypes.Name, "Sanam Udash"));
                 var claimsIdentity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
@@ -170,6 +173,8 @@ namespace InventoryManagement.Controllers{
         {
             return View();
         }
+        
+       
 
 
 
