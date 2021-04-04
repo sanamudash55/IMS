@@ -93,7 +93,7 @@ namespace inventory_management
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Inventory}/{action=WelcomePage}/{id?}");
             });
         }
     }
