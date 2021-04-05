@@ -15,11 +15,14 @@
       <th scope="col">Expiry Date</th>
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
-          @if(User.Identity.IsAuthenticated)
+       @if(User.IsInRole("Admin"))
       {
         <th scope="col">Action</th>
-      <th scope="col">Sold</th>
-      }
+        }
+        @if(User.IsInRole("Seller"))
+        {
+          <th scope="col">Sold</th>
+        }
     </tr>
   </thead>
 @foreach (var inventory in Model)
@@ -32,13 +35,17 @@
       <td>@inventory.ExpDate</td>
       <td>@inventory.Price</td>
       <td>@inventory.Quantity</td>
-               @if(User.Identity.IsAuthenticated)
+          @if(User.IsInRole("Admin"))
       {
         <td><a href="/inventory/edit?id=@inventory.Id">
       Edit</a>/<a href="/inventory/delete?id=@inventory.Id">
       Delete</a></td>
-      <td><a href="/inventory/sell?id=@inventory.Id">Sell</td>
-      } 
+      
+      }  
+      @if(User.IsInRole("Seller"))
+      {
+        <td><a href="/inventory/sell?id=@inventory.Id">Sell</td>
+      }
     </tr>
   </tbody>
 }

@@ -9,15 +9,26 @@
         How many quantities do you want to sell?
         
         <div class="col-md-6 form-group">
-                <input name="sellquan" type="number" class="form-control" required>      
+                <input id="sell" type="number" class="form-control" required>      
 
-                <input id="one" type="hidden" asp-for= "Quantity" class="form-control" value="777" required> 
+                <input id="original" type="hidden" asp-for= "Quantity" class="form-control" required> 
                 
                 <script>
-                    var soldquan = sellquan ;
-                    document.getElementById("one").value = 88;
+                    function myFunction(){
+                    var sellquant = Number(document.getElementById("sell").value) ;
+                    var originalquan = Number(document.getElementById("original").value) ;
+                    var rem= Number(originalquan-sellquant);
+                    if(rem > 0)
+                    {
+                        document.getElementById("original").value = rem;
+                    }
+                    else{
+                        alert("NOT Sold");
+                    }
+
+                    }
                 </script>                     
         </div>        
         <br>
-        <button type="submit" class="btn btn-primary">Sell</button>
+        <button type="submit" onclick="myFunction()" class="btn btn-primary">Sell</button>
 </form>

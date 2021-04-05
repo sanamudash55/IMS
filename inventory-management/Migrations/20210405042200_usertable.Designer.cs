@@ -3,14 +3,16 @@ using System;
 using InventoryManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace inventory_management.Migrations
 {
     [DbContext(typeof(IMSContext))]
-    partial class IMSContextModelSnapshot : ModelSnapshot
+    [Migration("20210405042200_usertable")]
+    partial class usertable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,10 +46,8 @@ namespace inventory_management.Migrations
 
             modelBuilder.Entity("InventoryManagement.Models.Users", b =>
                 {
-                    b.Property<string>("username")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("email")
@@ -65,17 +65,17 @@ namespace inventory_management.Migrations
                     b.Property<int>("mobile")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("role")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("username");
+                    b.Property<string>("username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("Users");
+                    b.HasKey("Id");
+
+                    b.ToTable("Usertable");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,14 +3,16 @@ using System;
 using InventoryManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace inventory_management.Migrations
 {
     [DbContext(typeof(IMSContext))]
-    partial class IMSContextModelSnapshot : ModelSnapshot
+    [Migration("20210405062502_newtable")]
+    partial class newtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

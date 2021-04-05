@@ -1,0 +1,8 @@
+@model Users
+<form action="/inventory/userdelete" method="POST">
+    <input type="hidden" asp-for="username" />
+
+        Do you want to delete this record?
+        <br>
+        <button type="submit" class="btn btn-primary">Delete</button>
+</form>

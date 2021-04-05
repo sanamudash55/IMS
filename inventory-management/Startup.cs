@@ -35,36 +35,8 @@ namespace inventory_management
                 // this will route the page to login action when we want to access the page without authentication valid
                 options.LoginPath="/login";
                 options.AccessDeniedPath="/denied";
-                options.Events = new CookieAuthenticationEvents()
-                {
-                    // check all the event on completion of sining in 
-                    OnSigningIn = async context =>
-                     {   // accesing the principal 
-                        var principal = context.Principal;
-                         // checking that it has name identifier of not 
-                        if(principal.HasClaim(c=>c.Type == ClaimTypes.NameIdentifier))
-                         {   // if the name identifier is test then give him the role of admin 
-                         if(principal.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.NameIdentifier).Value == "test")
-                            {  // giving the claim of the Admin
-                               var claimsIdentity = principal.Identity as ClaimsIdentity;
-                                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"Admin"));
-                     }
-                       }
-                        await Task.CompletedTask;
-                    },
-                    // check all the event on singned in
-                    OnSignedIn = async context =>
-                    {
-                        await Task.CompletedTask;
-                    },
-                    // check all the event on validateding after login
-                    OnValidatePrincipal =async  context =>
-                    {
-                        await Task.CompletedTask;
-                    }
-                };
-            }
-            );
+               
+            });
 
         }
 

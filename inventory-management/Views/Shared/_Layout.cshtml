@@ -18,15 +18,21 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @if(User.IsInRole("Admin") ||User.IsInRole("Seller")||User.IsInRole("Viewer"))
+                        {
+                              <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="Index">Home</a>
                         </li>
-                        @if(User.Identity.IsAuthenticated)
+                        }
+                      
+                        @if(User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="Create">Add</a>
                         </li>
                         }
+                         @if(User.IsInRole("Admin") ||User.IsInRole("Seller")||User.IsInRole("Viewer"))
+                        {
                         
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="lessquantity">Less Quantity Inventories</a>
@@ -34,6 +40,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="expired">Expiring Items </a>
                         </li>
+                        @if(User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="UserList">UserList</a>
+                        </li>
+                        }  
                         
                         <li class="nav-item">
                             <form asp-controller="Inventory" asp-action="Search">
@@ -41,6 +53,7 @@
                                 <input type="submit" value="Filter" />
                         </form> 
                         </li>
+                        }
                          @if(User.Identity.IsAuthenticated)
                         {
                              <li class="nav-item">

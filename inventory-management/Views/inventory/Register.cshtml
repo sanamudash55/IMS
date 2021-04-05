@@ -1,0 +1,67 @@
+
+<h1> this is register page</h1>
+@{
+    
+    var error = TempData["Error"] as string;
+}
+@model Users
+@if (!string.IsNullOrEmpty(error))
+{
+    <h2 class="alert-danger" style="padding: 20px;">@error</h2>
+}
+
+<form action="/inventory/Register" method="POST">
+
+                <h1 class="card-title">Create</h1>
+
+              <form>
+
+                <div class="card-body">
+                    <div class="col-md-6 form-group">
+                    <label asp-for="firstname">First Name</label>
+                    <span asp-validation-for="firstname" class="text-danger"></span>
+                          <input asp-for="firstname" class="form-control" type="text" required>      
+                  </div>
+                    <div class="col-md-6 form-group">
+                    <label asp-for="lastname"> Last Name</label>
+                    <span asp-validation-for="lastname" class="text-danger"></span>
+                          <input asp-for="lastname" class="form-control" type="text" required>      
+                  </div>
+                    <div class="col-md-6 form-group">
+                    <label asp-for="username"> Username</label>
+                    <span asp-validation-for="username" class="text-danger"></span>
+                          <input asp-for="username" class="form-control" type="text" required>      
+                  </div>
+                   <div class="col-md-6 form-group">
+                    <label asp-for="password"> Password</label>
+                    <span asp-validation-for="password" class="text-danger"></span>
+                          <input asp-for="password" class="form-control" type="password" required>      
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label asp-for="mobile"> Mobile</label>
+                    <span asp-validation-for="mobile" class="text-danger"></span>
+                          <input asp-for= "mobile" class="form-control" type="number" required>      
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label asp-for="email"> Email</label>
+                    <span asp-validation-for="email" class="text-danger"></span>
+                          <input asp-for= "email" class="form-control" type="text" required>      
+                  </div>
+                   <div class="col-md-6 form-group">
+                    <label asp-for="role"> Role</label>
+                    <span asp-validation-for="role" class="text-danger"></span>
+                          
+                          <select asp-for="role" class="form-control">
+                            <option value="Admin">Admin</option>
+                            <option value="Seller">Seller</option>
+                            <option value="Viewer">Viewer</option>
+                          </select>  
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+</form>            
+            <!-- /.card -->

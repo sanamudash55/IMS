@@ -1,0 +1,49 @@
+@model List<Users>;
+  @{
+    
+    Layout = "_Layout";
+  }
+
+  @{
+    ViewData["Title"] = "User List";
+}
+
+<h1>List of Inventories</h1>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th scope="col">Full Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      @if(User.Identity.IsAuthenticated)
+      {
+        <th scope="col">Action</th>
+      
+      }
+      
+    </tr>
+  </thead>
+@foreach (var user in Model)
+{
+   <tbody>
+    <tr>
+      
+      <td>@user.firstname @user.lastname</td>
+      <td>@user.username</td>
+      <td>@user.mobile</td>
+      <td>@user.email</td>
+      <td>@user.role</td>
+      @if(User.Identity.IsAuthenticated)
+      {
+        <td><a href="/inventory/userdelete?username=@user.username">
+      Delete</a></td>
+     
+      }
+      
+    </tr>
+  </tbody>
+}
+</table>
